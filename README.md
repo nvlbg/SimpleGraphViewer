@@ -8,7 +8,7 @@ How to use
 ----------
 
 You can see how to use it in the examples/ directory.
-Basically, supposing that you have sg.Graph in a variable *g*:
+Basically, supposing that you have sg.Graph in a variable *graph*:
 
 ```
 var renderer = new sg.Renderer.D3Renderer(graph);
