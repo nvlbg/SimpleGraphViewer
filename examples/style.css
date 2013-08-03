@@ -1,0 +1,34 @@
+g#edges path {
+	stroke: #565656;
+	stroke-width: 3;
+	cursor: pointer;
+}
+
+g#edges path:hover {
+	stroke: #AA4477;
+	stroke-dasharray: 10, 15;
+}
+
+g#edges path.selected {
+	stroke-dasharray: 10, 15;			
+}
+
+g#edges path.arrow {
+	stroke-width: 0;
+}
+
+g#nodes circle {
+	fill: #AFAFAF;
+	stroke: #565656;
+	stroke-width: 2;
+	cursor: pointer;
+}
+
+g#nodes circle:hover {
+	stroke: #AA4477;
+	stroke-width: 3;
+}
+
+g#nodes circle.selected {
+	stroke-width: 3;
+}

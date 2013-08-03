@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <title>SimpleGraph D3 Renderer</title>
+
+        <!-- Styling document -->
+        <style type="text/css">
+        svg {
+            border: 1px solid #000;
+        }
+        </style>
+        <!-- Styling SVG Elements -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="../lib/buckets.js"></script>
+        <script src="../lib/simple-graph.js"></script>
+        <script src="../lib/requestAnimationFrame.js"></script>
+        <script src="../src/D3Renderer.js"></script>
+        <script>
+        (function() {
+            var json = {
+                nodes: {
+                    "1": { pos: {x: 50, y: 50}, radius: 25 },
+                    "2": { pos: {x: 100, y: 250}, radius: 20 },
+                    "3": { pos: {x: 400, y: 25}, radius: 20 },
+                    "4": { pos: {x: 400, y: 250}, radius: 20 },
+                },
+                edges: [ ["1", "2"], ["1", "4"], ["3", "4"], ["1", "3"] ]
+            };
+
+            var createGraphFromJson = function(json) {
+                var g = new sg.Graph({
+                    direction: sg.DIRECTION.MIXED
+                });
+                
+                for (var i in json.nodes) {
+                    var node = new sg.Node(i, json.nodes[i]);
+                    g.addNode(node);
+                }
+
+                json.edges.forEach(function(edge) {
+                    g.connect(edge[0], edge[1]);
+                });
+
+                g.edges.forEach(function(edge) {
+                    edge.directed(true);
+                    return false;
+                });
+
+                return g;
+            };
+
+            var graph    = createGraphFromJson(json);
+            var renderer = new sg.Renderer.D3Renderer(graph, {
+                markerSize: 15
+            });
+            renderer.draw();
+        })();
+        </script>
+    </body>
+</html>
