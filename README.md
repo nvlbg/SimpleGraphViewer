@@ -20,8 +20,8 @@ renderer.draw();
 TODO
 ----
 
-[ ] Multigraph and selfloops support
-[ ] Automatic calculation of each node's position
-[ ] Add more flexability for drawing (e.g. support for user defined callback functions)
-[ ] Host demo somewhere
-[ ] Add screenshots
+- [ ] Multigraph and selfloops support
+- [ ] Automatic calculation of each node's position
+- [ ] Add more flexability for drawing (e.g. support for user defined callback functions)
+- [ ] Host demo somewhere
+- [ ] Add screenshots
