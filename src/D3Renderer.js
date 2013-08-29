@@ -1,4 +1,14 @@
 (function () {
+    "use strict";
+
+    if (typeof sg === "undefined") {
+        throw "Module SimpleGraph (sg) is not yet loaded.";
+    }
+
+    if (typeof d3 === "undefined") {
+        throw "Module D3 is not yet loaded.";
+    }
+
 	function D3Renderer(graph, options) {
         if (!(graph instanceof sg.Graph)) {
             throw "the graph param is not sg.Graph";
@@ -75,9 +85,11 @@
                 y = ty - sy;
 
                 var ratio = (this.markerSize+target.options.radius)/Math.sqrt(x*x + y*y);
-                
-                x = x * ratio;
-                y = y * ratio;
+
+                if (window.isFinite(ratio)) {
+                    x *= ratio;
+                    y *= ratio;
+                }
             }
 
             edge.options.x1 = target.options.pos.x - x;
@@ -137,6 +149,8 @@
                 });
 
         var mousedown = false;
+        var startX = 0;
+        var startY = 0;
         var deltaX = 0;
         var deltaY = 0;
         this.svg.on("mouseup", function() {
